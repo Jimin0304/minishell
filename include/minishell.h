@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <termios.h>
+# include <signal.h>
 
 typedef struct	s_list
 {
@@ -33,12 +35,10 @@ typedef struct	t_info
 
 char	*ft_strdup(char *s1);
 int		ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
 int		ft_strlcpy(char *dst, char *src, int dstsize);
 char	*ft_strtrim(char *s1, char set);
 char	*ft_substr(char *s, unsigned int start);
 void	make_nodes(char *line, int size, t_info *info);
 void	devide_cmd(char *line, t_info *info);
-
 
 #endif
