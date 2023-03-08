@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 23:21:40 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 17:05:19 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 19:07:26 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ void	make_nodes(char *line, int size, t_info *info)
 		newnode->type = 1;		// type 1을 파이프로
 		line[size] = '\0';
 	}
-	else if (line[size] == ';')
-	{
-		newnode->type = 2;		// type 2를 ;로
-		line[size] = '\0';
-	}
 	else
 		newnode->type = 0;		// type 0을 null로
 	newnode->content = ft_strtrim(line, (char)32);
@@ -52,7 +47,7 @@ void	divide_cmd(char *line, t_info *info)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] == '|' || line[i] == ';')
+		if (line[i] == '|')
 		{
 			make_nodes(ft_strdup(line), i, info);
 			line = ft_substr(line, i + 1);

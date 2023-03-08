@@ -6,13 +6,11 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:20:12 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 17:54:53 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 20:22:17 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-void rl_replace_line(const char *text, int clear_undo); // 따로 선언을 안해주니까 makefile로 컴파일이 안 됨 ....
 
 void set_input_mode(struct termios *term)
 {
@@ -25,7 +23,7 @@ void	sig_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		printf("%s", "\n");
+		printf("\n");
 		rl_on_new_line();
 	}
 	rl_replace_line("", 1);
@@ -60,9 +58,15 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		line = readline("minishell$ ");		// 기본함수 -> str를 출력하고 프롬프트를 열어서 표준입력으로 문자열을 입력받는다.
 		if (!line)
+		{
+			printf("\033[1A"); // 커서를 위로 한 줄 올린다.
+			printf("\033[10C"); // 커서를 10만큼 앞으로 전진시킨다.
+			printf(" exit\n");
 			break ;
+		}
+		check_syntax(line);
 		add_history(line);					// 기본함수 -> 사용한 명령어를 history에 저장
-		divide_cmd(line, &info);			// |, ;, null 세가지의 구분자를 기준으로 cmd를 나눔.
+		divide_cmd(line, &info);			// |, null 두 가지의 구분자를 기준으로 cmd를 나눔.
 		free (line);
 	}
 	return (0);
