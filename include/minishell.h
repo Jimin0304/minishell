@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:19:11 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 17:41:00 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 19:13:20 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ char	*ft_strtrim(char *s1, char set);
 char	*ft_substr(char *s, unsigned int start);
 void	make_nodes(char *line, int size, t_info *info);
 void	divide_cmd(char *line, t_info *info);
+void	check_syntax(char *line);
 
 #endif
