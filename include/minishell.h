@@ -6,13 +6,14 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:19:11 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/01 23:22:23 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 17:41:00 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <readline/readline.h>
@@ -27,7 +28,7 @@ typedef struct	s_list
 	int				type;
 }				t_list;
 
-typedef struct	t_info
+typedef struct	s_info
 {
 	struct s_list	*head;
 	struct s_list	*last;
@@ -39,6 +40,6 @@ int		ft_strlcpy(char *dst, char *src, int dstsize);
 char	*ft_strtrim(char *s1, char set);
 char	*ft_substr(char *s, unsigned int start);
 void	make_nodes(char *line, int size, t_info *info);
-void	devide_cmd(char *line, t_info *info);
+void	divide_cmd(char *line, t_info *info);
 
 #endif
