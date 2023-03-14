@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:19:11 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 19:13:20 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 21:02:28 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@
 # include <termios.h>
 # include <signal.h>
 
-typedef struct	s_list
+typedef struct	s_cmd
 {
 	char			*content;
-	struct s_list	*next;
-	int				type;
-}				t_list;
+	struct s_cmd	*next;
+	int				is_pipe;
+}				t_cmd;
 
 typedef struct	s_info
 {
-	struct s_list	*head;
-	struct s_list	*last;
+	struct s_cmd	*head;
+	struct s_cmd	*last;
 }				t_info;
 
 char	*ft_strdup(char *s1);

@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:20:12 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 20:22:17 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 20:32:18 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ int	main(int argc, char *argv[], char *envp[])
 			printf(" exit\n");
 			break ;
 		}
-		check_syntax(line);
 		add_history(line);					// 기본함수 -> 사용한 명령어를 history에 저장
-		divide_cmd(line, &info);			// |, null 두 가지의 구분자를 기준으로 cmd를 나눔.
+		tokenizing_cmds(line, &info);
 		free (line);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:41:27 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 16:04:14 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 20:27:43 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char	*ft_strdup(char *s1)
 	dest[i] = '\0';
 	return (dest);
 }
-
 
 int	ft_strlcpy(char *dst, char *src, int dstsize)
 {

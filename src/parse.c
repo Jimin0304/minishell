@@ -6,15 +6,20 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 23:21:40 by jimpark           #+#    #+#             */
-/*   Updated: 2023/03/08 19:07:26 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/03/08 21:02:53 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+// char	**tokenizing_cmds(char *cmd)
+// {
+// 	while (*cmd)
+// }
+
 void	make_nodes(char *line, int size, t_info *info)
 {
-	t_list	*newnode;
+	t_cmd	*newnode;
 
 	newnode = (t_list *)malloc(sizeof(t_list));
 	if (!newnode)
@@ -32,11 +37,11 @@ void	make_nodes(char *line, int size, t_info *info)
 	newnode->next = NULL;
 	if (line[size] == '|')
 	{
-		newnode->type = 1;		// type 1을 파이프로
+		newnode->is_pipe = 1;		// is_pipe 1을 파이프로
 		line[size] = '\0';
 	}
 	else
-		newnode->type = 0;		// type 0을 null로
+		newnode->is_pipe = 0;		// is_pipe 0을 null로
 	newnode->content = ft_strtrim(line, (char)32);
 }
 
@@ -56,4 +61,14 @@ void	divide_cmd(char *line, t_info *info)
 		i++;
 	}
 	make_nodes(line, i, info);
+}
+
+void	parse_cmds(char *line, t_info *info)
+{
+	check_syntax(line);				// 닫히지 않는 구문이 있는지 검사
+	divide_cmd(line, &info);		// |, null 두 가지의 구분자를 기준으로 cmd를 나눔.
+	while (info->head)
+	{
+
+	}
 }
