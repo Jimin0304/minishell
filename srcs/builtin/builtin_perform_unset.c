@@ -26,7 +26,7 @@ int	perform_unset(char **word, int *fd)
 		while (envp_list[idx->i] != NULL)
 		{
 			if (idx->i != 0 && check_unset_dup(word[idx->k], \
-			envp_list[idx->i]))
+			envp_list[idx->i]) && envp_list[idx->i][0] != '_')
 				unset_env(idx);
 			idx->i++;
 		}
