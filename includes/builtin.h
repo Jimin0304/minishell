@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:09:58 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:29:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:09:34 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_index
 }	t_index;
 
 t_index	*make_idx(void);
-
 
 int		perform_export(char **word, int *fd);
 char	**change_env_at_export(char *str, char **new_list, int i);
@@ -57,6 +56,5 @@ int		perform_exit(char **word, int *fd);
 void	print_errmsg_at_exit(int *fd, char *copy_str);
 int		get_envp_size(void);
 void	check_next_dol(char *str, int i);
-
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:22 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:29:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:47 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,40 +44,41 @@ typedef struct s_node{
 	struct s_node	*left;
 	struct s_node	*right;
 	struct s_node	*up;
-}	t_node;
+}				t_node;
 
 typedef struct s_tree
 {
 	t_node	*top;
 	int		node_count;
-}	cmd_tree;
+}				t_tree;
 
 //파싱
 void	process_and_execution(char *str);
 char	**get_env(char **envp);
 void	malloc_failed(char *str);
 
-t_node	*parse_get_tokens_top(cmd_tree *tree);
-int		parsing_add_redirect(cmd_tree *tree, cmd_tree *tokens, \
+t_node	*parse_get_tokens_top(t_tree *tree);
+int		parsing_add_redirect(t_tree *tree, t_tree *tokens, \
 												t_node *cur_cmd_nd);
-int		add_pipe_cmd(cmd_tree *tree, cmd_tree *tokens, \
+int		add_pipe_cmd(t_tree *tree, t_tree *tokens, \
 												t_node *cur_pipe_nd);
-int		parsing_add_scmd(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd_nd);
+int		parsing_add_scmd(t_tree *tree, t_tree *tokens, t_node *cur_cmd_nd);
 int		cnt_wordnd(t_node *node);
 
 int		heredoc(char *key, t_node *node);
-int		parsing(cmd_tree **tokens);
-int		start_parsing(cmd_tree *tree, cmd_tree *tokens, t_node **cur_pipe);
-int		parsing_redirect(cmd_tree *tree, cmd_tree *tokens, \
+int		parsing(t_tree **tokens);
+int		start_parsing(t_tree *tree, t_tree *tokens, t_node **cur_pipe);
+int		parsing_redirect(t_tree *tree, t_tree *tokens, \
 								t_node *cur_cmd_nd, t_node *cur_tokens_node);
-int		parsing_word(cmd_tree *tree, cmd_tree *tokens, \
+int		parsing_word(t_tree *tree, t_tree *tokens, \
 								t_node *cur_cmd_nd, t_node *cur_tokens_node);
-int		parsing_pipe(cmd_tree *tree, cmd_tree *tokens, t_node **cur_pipe_nd);
+int		parsing_pipe(t_tree *tree, t_tree *tokens, t_node **cur_pipe_nd);
 void	parsing_error(char *str);
 
 //토큰
-cmd_tree	*start_tokenize(char *s);
-void	change_whitespace(char *s);
+t_tree	*start_tokenize(char *s);
+int		change_whitespace(char *s);
+int		check_dquot_error(char *s);
 char	*change_each_oper(char *s, char op);
 char	*change_redir(char *s, char op);
 char	*change_oper(char *s);
@@ -105,15 +106,15 @@ char	*get_merged_str(char *str, t_index *i);
 int		check_input_whitespace(char *str);
 
 //트리
-cmd_tree	*create_tree(void);
+t_tree	*create_tree(void);
 t_node	*tree_create_node(enum e_ttype type, char *str);
-int		tree_connect_node_left(cmd_tree *tree, t_node *cur_node, \
+int		tree_connect_node_left(t_tree *tree, t_node *cur_node, \
 												t_node *new_node);
-int		tree_connect_node_right(cmd_tree *tree, t_node *cur_node, \
+int		tree_connect_node_right(t_tree *tree, t_node *cur_node, \
 												t_node *new_node);
 
 void	tree_clear_node(t_node *node);
 void	tree_delete_nodes(t_node *node);
-void	tree_delete(cmd_tree *tree);
+void	tree_delete(t_tree *tree);
 
 #endif

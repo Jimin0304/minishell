@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:24 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/02 20:03:04 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/04/05 16:33:29 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ char	**get_env(char **envp)
 		len++;
 	list = malloc_env(len + 1);
 	len = 0;
-	//list[0] = ft_strdup2("0", "get_env");
-	if (ft_isdigit(envp[0][0]))
-		j++;
 	while (envp[j])
 	{
-		if (ft_strncmp("OLDPWD=", envp[j], 7) == 0)
-			list[len] = ft_strdup2("OLDPWD", "get_env");
+		if (ft_strncmp("PWD=", envp[j], 4) == 0)
+			list[len] = ft_strdup2("PWD", "get_env");
 		else
 			list[len] = ft_strdup2(envp[j], "get_env");
 		len++;

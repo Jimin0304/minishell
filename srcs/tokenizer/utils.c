@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:58:54 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 03:06:56 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:03:46 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,30 @@ int	skip_dquot(char *s)
 	}
 	if (s[i] == '\0')
 		return (0);
+	return (i);
+}
+
+int	check_dquot_error(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s[i] == '\"')
+	{
+		i++;
+		while (s[i] != '\"' && s[i] != '\0')
+			i++;
+		if (s[i] == '\0')
+			return (-1);
+	}
+	else if (s[i] == '\'')
+	{
+		i++;
+		while (s[i] != '\'' && s[i] != '\0')
+			i++;
+		if (s[i] == '\0')
+			return (-2);
+	}
 	return (i);
 }
 

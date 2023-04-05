@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_builtin.c                                      :+:      :+:    :+:   */
+/*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:00:59 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:29:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	run_builtin(t_node *simp_cmd, int *fd)
 	return (flag);
 }
 
-int	noconnect_pipe_builtin(cmd_tree *tree)
+int	noconnect_pipe_builtin(t_tree *tree)
 {
 	int		exit_flag;
 	t_node	*cmd_nd;
@@ -61,7 +61,7 @@ int	noconnect_pipe_builtin(cmd_tree *tree)
 		return (-1);
 	if (init_fd(&fd) == -1)
 		return (exit_flag);
-	if (set_redirection(cmd_nd->left, fd))//리다이렉션이 존재한다면 표준입력과 출력은 리다이렉션(데이터의 이동방향설정)되어있음 
+	if (set_redirection(cmd_nd->left, fd))//리다이렉션이 존재한다면 표준입력과 출력은 리다이렉션(데이터의 이동방향설정)되어있음
 		exit_flag = run_builtin(sim_cmd_nd, fd);
 	if (fd[STD_IN] > 2)
 		close2(fd[STD_IN]);

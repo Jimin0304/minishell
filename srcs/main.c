@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:44 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/02 20:20:16 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:14:05 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 void	process_and_execution(char *user_input)
 {
-	cmd_tree	*tree;
+	t_tree	*tree;
 	int		exit_flag;
 
 	if (user_input[0] != '\0')//공백이 아닌 문자가 존재하면

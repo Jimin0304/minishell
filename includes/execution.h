@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:12 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:37:08 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include "minishell.h"
 # include <sys/wait.h>
 
-
-int		execution(cmd_tree *tree);
+int		execution(t_tree *tree);
 pid_t	*execution_fork(t_node *pipe_nd, char **envp_list, pid_t *pids);
 int		execution_wait_child(int *pids);
 
@@ -29,7 +28,7 @@ int		*set_redirection(t_node *redirct_nd, int *fd);
 int		set_redirection_type(t_node *redirct_nd, int *fd);
 
 int		run_builtin(t_node *simp_cmd, int *fd);
-int		noconnect_pipe_builtin(cmd_tree *tree);
+int		noconnect_pipe_builtin(t_tree *tree);
 
 int		check_exit_status(int statloc);
 int		init_fd(int **fd);

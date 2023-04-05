@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree_delete.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:51 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:10:52 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	tree_delete_nodes(t_node *node)
 	free (node);
 }
 
-void	tree_delete(cmd_tree *tree)
+void	tree_delete(t_tree *tree)
 {
 	if (tree == NULL)
 		return ;

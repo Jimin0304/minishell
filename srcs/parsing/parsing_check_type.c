@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check_type.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:00:11 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:19:30 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	parsing_check_type(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd)
+int	parsing_check_type(t_tree *tree, t_tree *tokens, t_node *cur_cmd)
 {
 	int		rtn;
 	t_node	*next;
@@ -32,7 +32,7 @@ int	parsing_check_type(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd)
 	return (rtn);
 }
 
-int	parsing_redirect(cmd_tree *tree, cmd_tree *tokens,
+int	parsing_redirect(t_tree *tree, t_tree *tokens,
 							t_node *cur_cmd, t_node *cur_token)
 {
 	int		rtn;
@@ -51,7 +51,7 @@ int	parsing_redirect(cmd_tree *tree, cmd_tree *tokens,
 	return (rtn);
 }
 
-int	parsing_word(cmd_tree *tree, cmd_tree *tokens, \
+int	parsing_word(t_tree *tree, t_tree *tokens, \
 						t_node *cur_cmd, t_node *cur_tokens)
 {
 	int		rtn;
@@ -70,7 +70,7 @@ int	parsing_word(cmd_tree *tree, cmd_tree *tokens, \
 	return (rtn);
 }
 
-int	parsing_pipe(cmd_tree *tree, cmd_tree *tokens, t_node **cur_pipe)
+int	parsing_pipe(t_tree *tree, t_tree *tokens, t_node **cur_pipe)
 {
 	int		rtn;
 

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   tree.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:57 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:10:59 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include	"error.h"
 
-cmd_tree	*create_tree(void)
+t_tree	*create_tree(void)
 {
-	cmd_tree	*new_tree;
+	t_tree	*new_tree;
 
-	new_tree = (cmd_tree *)malloc(sizeof(cmd_tree));
+	new_tree = (t_tree *)malloc(sizeof(t_tree));
 	if (new_tree == NULL)
 		exit(print_errno(2, "fail create tree", NULL, 1));
 	new_tree->top = NULL;
@@ -41,7 +41,7 @@ t_node	*tree_create_node(enum e_ttype type, char *str)
 	return (new_node);
 }
 
-int	tree_connect_node_left(cmd_tree *tree, t_node *cur_node, t_node *new_node)
+int	tree_connect_node_left(t_tree *tree, t_node *cur_node, t_node *new_node)
 {
 	if (cur_node->left != NULL)
 		return (-1);
@@ -51,7 +51,7 @@ int	tree_connect_node_left(cmd_tree *tree, t_node *cur_node, t_node *new_node)
 	return (1);
 }
 
-int	tree_connect_node_right(cmd_tree *tree, t_node *cur_node, t_node *new_node)
+int	tree_connect_node_right(t_tree *tree, t_node *cur_node, t_node *new_node)
 {
 	if (cur_node->right != NULL)
 		return (-1);

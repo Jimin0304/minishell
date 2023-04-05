@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:00:38 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:00:41 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "builtin.h"
 
 static char		**execution_get_path(char **envp_list);
-static pid_t	*execution_init_pids(cmd_tree *tree);
+static pid_t	*execution_init_pids(t_tree *tree);
 static void		execution_free_env_path(char **env_path);
 
-int	execution(cmd_tree *tree)
+int	execution(t_tree *tree)
 {
 	pid_t	*pids;
 	int		exit_flag;
@@ -77,7 +77,7 @@ static char	**execution_get_path(char **envp_list)
 	return (NULL);
 }
 
-static pid_t	*execution_init_pids(cmd_tree *tree)
+static pid_t	*execution_init_pids(t_tree *tree)
 {
 	t_node	*pipe_nd;
 	int		cnt;

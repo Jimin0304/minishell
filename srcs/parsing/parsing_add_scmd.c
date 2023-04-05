@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_add_scmd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:00:17 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:00:18 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "builtin.h"
 
-static	void	parsing_add_scmd_new(cmd_tree *tokens, t_node *cur_cmd_nd);
-static	void	parsing_add_scmd_extend(cmd_tree *tokens, t_node *token);
+static	void	parsing_add_scmd_new(t_tree *tokens, t_node *cur_cmd_nd);
+static	void	parsing_add_scmd_extend(t_tree *tokens, t_node *token);
 
-int	parsing_add_scmd(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd_nd)
+int	parsing_add_scmd(t_tree *tree, t_tree *tokens, t_node *cur_cmd_nd)
 {
 	t_node	*token;
 	t_node	*tmp;
@@ -33,7 +33,7 @@ int	parsing_add_scmd(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd_nd)
 	cnt = 1;
 	while (token->str2[cnt])
 		cnt++;
-	while (tokens->top->type == T_WORD)// 이 반복문에서 scmd노드의 [문자열 배열]에다가 토큰리스트에서 T_word인 노드들의 문자열들을 순차적으로 담는다 
+	while (tokens->top->type == T_WORD)// 이 반복문에서 scmd노드의 [문자열 배열]에다가 토큰리스트에서 T_word인 노드들의 문자열들을 순차적으로 담는다
 	{
 		tmp = parse_get_tokens_top(tokens);
 		token->str2[cnt++] = tmp->str1;
@@ -43,7 +43,7 @@ int	parsing_add_scmd(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd_nd)
 	return (1);
 }
 
-static void	parsing_add_scmd_new(cmd_tree *tokens, t_node *cur_cmd_nd)
+static void	parsing_add_scmd_new(t_tree *tokens, t_node *cur_cmd_nd)
 {
 	t_node	*token;
 
@@ -56,7 +56,7 @@ static void	parsing_add_scmd_new(cmd_tree *tokens, t_node *cur_cmd_nd)
 	token->str2[1] = NULL;
 }
 
-static void	parsing_add_scmd_extend(cmd_tree *tokens, t_node *token)
+static void	parsing_add_scmd_extend(t_tree *tokens, t_node *token)
 {
 	int		i;
 	char	**str2;

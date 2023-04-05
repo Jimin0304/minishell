@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:49 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 01:59:51 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "builtin.h"
 
-t_node	*parse_get_tokens_top(cmd_tree *tree)//탑노드를 하나 분리 후 가져오고 완쪽에 있는 노드를 탑에 위치시킨다.
+t_node	*parse_get_tokens_top(t_tree *tree)//탑노드를 하나 분리 후 가져오고 완쪽에 있는 노드를 탑에 위치시킨다.
 {
 	t_node	*tmp;
 
@@ -29,7 +29,7 @@ t_node	*parse_get_tokens_top(cmd_tree *tree)//탑노드를 하나 분리 후 가
 	return (tmp);
 }
 
-int	parsing_add_redirect(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd_nd)
+int	parsing_add_redirect(t_tree *tree, t_tree *tokens, t_node *cur_cmd_nd)
 {
 	t_node	*redirection_node;
 	t_node	*file_node;
@@ -58,7 +58,7 @@ int	parsing_add_redirect(cmd_tree *tree, cmd_tree *tokens, t_node *cur_cmd_nd)
 	return (rtn);
 }
 
-int	add_pipe_cmd(cmd_tree *tree, cmd_tree *tokens, t_node *cur_pipe_nd)//사용1 : 파이프 노드가 없을때 호출 , 사용2 :
+int	add_pipe_cmd(t_tree *tree, t_tree *tokens, t_node *cur_pipe_nd)//사용1 : 파이프 노드가 없을때 호출 , 사용2 :
 {
 	t_node	*new_pipe;
 

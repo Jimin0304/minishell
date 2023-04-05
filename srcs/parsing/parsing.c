@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:55 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:19:30 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
-int	parsing(cmd_tree **tokens)//* == ->
+int	parsing(t_tree **tokens)//* == ->
 {
-	cmd_tree	*tree;
+	t_tree	*tree;
 	int		parsing_flag;
 	t_node	*cur_pipe;
 
@@ -42,7 +42,7 @@ int	parsing(cmd_tree **tokens)//* == ->
 	return (parsing_flag);
 }
 
-int	start_parsing(cmd_tree *tree, cmd_tree *tokens, t_node **cur_pipe)//1번 인자는: 비어있는 트리, 2번: 만들어 놓은 트리, 3번: 탑 노드
+int	start_parsing(t_tree *tree, t_tree *tokens, t_node **cur_pipe)//1번 인자는: 비어있는 트리, 2번: 만들어 놓은 트리, 3번: 탑 노드
 {
 	int		rtn;
 	t_node	*cur_cmd;

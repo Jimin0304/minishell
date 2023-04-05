@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:03 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:29:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 #include <stdlib.h>
 
-cmd_tree	*start_tokenize(char *s)
+t_tree	*start_tokenize(char *s)
 {
-	t_node	*list;
-	cmd_tree	*tokens;
+	t_node		*list;
+	t_tree	*tokens;
+	int			i;
 
 	list = NULL;
 	s = get_env_tokenizer(s);//사용자 입력값에서 환경변수 키를 확인하고 벨류값으로 치환
-	if (s == NULL)
+	i = change_whitespace(s);// 공백에 자리에 -1 삽입
+	if (i == -1 || i == -2)
+	{
+		if (i == -2)
+			printf("minishell: syntax error near unexpected token '\''\n");
+		else
+			printf("minishell: syntax error near unexpected token '\"'\n");
 		return (NULL);
-	change_whitespace(s);// 공백에 자리에 -1 삽입
+	}
 	s = change_oper(s); // |,<,>의 기호 앞뒤로 -1 삽입
 	list = split_str(s);// 사용자 입력 문자열을 공백 기준으로 노드에 담은 연결리스트를 반환
 	free (s);
@@ -34,22 +41,27 @@ cmd_tree	*start_tokenize(char *s)
 	return (tokens);
 }
 
-void	change_whitespace(char *s)
+int	change_whitespace(char *s)
 {
-	int	i;
+	int		i;
+	int		tmp;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == '\"' || s[i] == '\'')
 		{
-			i += skip_dquot(&s[i]);
+			tmp = check_dquot_error(&s[i]);
+			if (tmp == -1 || tmp == -2)
+				return (tmp);
+			i += tmp;
 		}
 		else if (is_whitespace(s[i]))
 			s[i] = -1;
 		if (s[i] != '\0')
 			i++;
 	}
+	return (0);
 }
 
 char	*change_oper(char *s)
