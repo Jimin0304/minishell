@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:22 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/06 22:30:34 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:05:08 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include "error.h"
 # include "builtin.h"
 
-char	**envp_list;//환경변수
-
+char	**g_envp_list;//환경변수
 
 enum	e_pipe_fd {
 	PIPE_OUT = 0,

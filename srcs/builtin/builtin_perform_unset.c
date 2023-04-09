@@ -23,10 +23,10 @@ int	perform_unset(char **word, int *fd)
 	while (word[idx->k] != NULL)
 	{
 		check_export_word(word[idx->k], fd);
-		while (envp_list[idx->i] != NULL)
+		while (g_envp_list[idx->i] != NULL)
 		{
 			if (idx->i != 0 && check_unset_dup(word[idx->k], \
-			envp_list[idx->i]) && envp_list[idx->i][0] != '_')
+			g_envp_list[idx->i]) && g_envp_list[idx->i][0] != '_')
 				unset_env(idx);
 			idx->i++;
 		}
@@ -39,13 +39,13 @@ int	perform_unset(char **word, int *fd)
 
 void	unset_env(t_index *idx)
 {
-	free(envp_list[idx->i]);
-	while (envp_list[idx->i + 1] != NULL)
+	free(g_envp_list[idx->i]);
+	while (g_envp_list[idx->i + 1] != NULL)
 	{
-		envp_list[idx->i] = envp_list[idx->i + 1];
+		g_envp_list[idx->i] = g_envp_list[idx->i + 1];
 		idx->i++;
 	}
-	envp_list[idx->i] = envp_list[idx->i + 1];
+	g_envp_list[idx->i] = g_envp_list[idx->i + 1];
 }
 
 int	check_unset_dup(char *str, char *env)

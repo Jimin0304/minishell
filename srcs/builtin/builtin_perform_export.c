@@ -31,7 +31,7 @@ int	perform_export(char **word, int *fd)
 		if (return_value != save_value)
 			;
 		else
-			envp_list = change_env(ft_strdup2(word[i], "export"));
+			g_envp_list = change_env(ft_strdup2(word[i], "export"));
 		save_value = return_value;
 		i++;
 	}
@@ -52,30 +52,30 @@ char	**change_env(char *str)
 	oldsize = get_envp_size() - 1;
 	new_list = malloc_env(oldsize + 3);
 	i = 0;
-	while (envp_list[i] != NULL)
+	while (g_envp_list[i] != NULL)
 	{
-		if (i != 0 && check_dup(str, envp_list[i]))
+		if (i != 0 && check_dup(str, g_envp_list[i]))
 			return (change_env_at_export(str, new_list, i));
 		if (i == oldsize)
 			new_list[j++] = str;
-		new_list[j++] = ft_strdup2(envp_list[i++], "change_env");
+		new_list[j++] = ft_strdup2(g_envp_list[i++], "change_env");
 	}
 	new_list[j] = NULL;
-	free_env(envp_list);
+	free_env(g_envp_list);
 	return (new_list);
 }
 
 char	**change_env_at_export(char *str, char **new_list, int i)
 {
-	if (check_dup(str, envp_list[i]) == 2)
+	if (check_dup(str, g_envp_list[i]) == 2)
 		free(str);
 	else
 	{
-		free(envp_list[i]);
-		envp_list[i] = str;
+		free(g_envp_list[i]);
+		g_envp_list[i] = str;
 	}
 	free_env(new_list);
-	return (envp_list);
+	return (g_envp_list);
 }
 
 int	check_export_word(char *word, int *fd)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:58:37 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/06 22:01:03 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:05:00 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ char	*ft_strjoin_check_null(char *s1, char *s2)
 
 void	change_exit_flag(int num)
 {
-	free(envp_list[0]);
-	envp_list[0] = ft_itoa(num);
-	if (envp_list[0] == NULL)
+	free(g_envp_list[0]);
+	g_envp_list[0] = ft_itoa(num);
+	if (g_envp_list[0] == NULL)
 		malloc_failed("change_exit_flag");
 }
 

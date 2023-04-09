@@ -59,13 +59,13 @@ void	change_pwd(char *old_pwd, int *fd)
 	char	*pwd2;
 
 	pwd = ft_strjoin2("OLDPWD=", old_pwd, "cd");
-	envp_list = change_env(pwd);
+	g_envp_list = change_env(pwd);
 	free(old_pwd);
 	old_pwd = getcwd(NULL, 0);
 	if (old_pwd == NULL)
 		exit (print_errno(fd[STD_ERROR], "pwd", NULL, 1));
 	pwd2 = ft_strjoin2("PWD=", old_pwd, "cd");
-	envp_list = change_env(pwd2);
+	g_envp_list = change_env(pwd2);
 	free(old_pwd);
 }
 

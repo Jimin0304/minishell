@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:44 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/06 22:31:52 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:05:00 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	(void)argc;//사용되지 않는 변수들임 컴파일러의 경고를 피하기위해 작성
 	(void)argv;//마찬가지
-	envp_list = get_env(envp);
+	g_envp_list = get_env(envp);
 	while (1)
 	{
 		set_signal();
@@ -38,7 +38,7 @@ int	main(int argc, char *argv[], char *envp[])
 		break ;
 	}
 	set_terminal_print_on();
-	exit(ft_atoi(envp_list[0]));
+	exit(ft_atoi(g_envp_list[0]));
 }
 
 void	process_and_execution(char *user_input)

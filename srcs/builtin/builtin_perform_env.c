@@ -19,11 +19,11 @@ int	perform_env(int *fd)
 	int	i;
 
 	i = 1;
-	while (envp_list[i] != NULL)
+	while (g_envp_list[i] != NULL)
 	{
-		if (find_equal(envp_list[i]))
+		if (find_equal(g_envp_list[i]))
 		{
-			ft_putstr_fd(envp_list[i], fd[STD_OUT]);
+			ft_putstr_fd(g_envp_list[i], fd[STD_OUT]);
 			ft_putstr_fd("\n", fd[STD_OUT]);
 		}
 		i++;

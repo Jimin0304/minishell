@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+         #
+#    By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 02:10:37 by hwankim           #+#    #+#              #
-#    Updated: 2023/04/06 22:25:56 by hwankim          ###   ########.fr        #
+#    Updated: 2023/04/09 12:46:58 by jimpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ CC				= cc
 RM				= rm -rf
 CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address
 
-READLINE_LIB 	= -lreadline -L/opt/homebrew/opt/readline/lib
-READLINE_INC	= -I/opt/homebrew/opt/readline/include
+# READLINE_LIB 	= -lreadline -L/opt/homebrew/opt/readline/lib
+# READLINE_INC	= -I/opt/homebrew/opt/readline/include
 
-#READLINE_LIB = -lreadline -L/Users/jimpark/.brew/opt/readline/lib
-#READLINE_INC = -I/Users/jimpark/.brew/opt/readline/include
+READLINE_LIB = -lreadline -L/Users/jimpark/.brew/opt/readline/lib
+READLINE_INC = -I/Users/jimpark/.brew/opt/readline/include
 
 LIB_DIR			= ./libft
 HEADER			= ./includes

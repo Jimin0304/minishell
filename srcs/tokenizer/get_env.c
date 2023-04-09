@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:24 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/06 22:34:45 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:05:00 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ char	**get_env(char **envp)
 		j++;
 	while (envp[j])
 	{
-		if (ft_strncmp("PWD=", envp[j], 4) == 0)
-			list[len] = ft_strdup2("PWD", "get_env");
+		if (ft_strncmp("OLDPWD=", envp[j], 7) == 0)
+			list[len] = ft_strdup2("OLDPWD", "get_env");
 		else
 			list[len] = ft_strdup2(envp[j], "get_env");
 		len++;
@@ -50,20 +50,20 @@ char	*get_env_to_str(char *env)
 	if (env == NULL)
 		return (NULL);
 	if (env[0] == '?' && env[1] == '\0')
-		return (free_ret(env, envp_list[0]));
-	while (envp_list[++i.i] != NULL)
+		return (free_ret(env, g_envp_list[0]));
+	while (g_envp_list[++i.i] != NULL)
 	{
-		if (env[0] == envp_list[i.i][0])
+		if (env[0] == g_envp_list[i.i][0])
 		{
-			while (env[i.j] != '\0' && envp_list[i.i][i.j] \
-			!= '\0' && envp_list[i.i][i.j] != '=')
+			while (env[i.j] != '\0' && g_envp_list[i.i][i.j] \
+			!= '\0' && g_envp_list[i.i][i.j] != '=')
 			{
-				if (env[i.j] != envp_list[i.i][i.j])
+				if (env[i.j] != g_envp_list[i.i][i.j])
 					break ;
 				i.j++;
 			}
-			if (env[i.j] == '\0' && envp_list[i.i][i.j] == '=')
-				return (free_ret(env, &envp_list[i.i][++i.j]));
+			if (env[i.j] == '\0' && g_envp_list[i.i][i.j] == '=')
+				return (free_ret(env, &g_envp_list[i.i][++i.j]));
 		}
 		i.j = 0;
 	}

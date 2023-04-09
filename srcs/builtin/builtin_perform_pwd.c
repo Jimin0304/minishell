@@ -17,14 +17,22 @@
 
 int	perform_pwd(int *fd)
 {
-	char	*str;
-	int		errno;
+	int	i;
+	int	flag;
 
-	str = getcwd(NULL, 0);
-	if (str == NULL)
+	i = 0;
+	flag = 0;
+	while (g_envp_list[i])
+	{
+		if (ft_strncmp("PWD=", g_envp_list[i], 4) == 0)
+		{
+			printf("%s\n", ft_substr2(g_envp_list[i], 4, \
+				ft_strlen(g_envp_list[i]) - 4, "pwd"));
+			flag = 1;
+		}
+		i++;
+	}
+	if (flag == 0)
 		exit (print_errno(fd[STD_ERROR], "pwd", NULL, 1));
-	ft_putstr_fd(str, fd[STD_OUT]);
-	ft_putstr_fd("\n", fd[STD_OUT]);
-	free(str);
 	return (0);
 }

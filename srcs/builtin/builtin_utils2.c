@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:02:04 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 02:02:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:05:00 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	**sort_env(void)
 	new = malloc_env(get_envp_size() + 1);
 	i.i = 0;
 	i.j = 0;
-	while (envp_list[++i.i] != NULL)
-		new[i.j++] = ft_strdup2(envp_list[i.i], "env");
+	while (g_envp_list[++i.i] != NULL)
+		new[i.j++] = ft_strdup2(g_envp_list[i.i], "env");
 	new[i.i] = NULL;
 	i.i = -1;
 	while (new[++i.i] != NULL)
@@ -66,7 +66,7 @@ int	get_envp_size(void)
 	int	size;
 
 	size = 0;
-	while (envp_list[size] != NULL)
+	while (g_envp_list[size] != NULL)
 		size++;
 	return (size);
 }

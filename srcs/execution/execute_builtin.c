@@ -6,7 +6,7 @@
 /*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:00:59 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/05 17:12:41 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:03:57 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	run_builtin(t_node *simp_cmd, int *fd)
 		flag = perform_echo(simp_cmd->str2, fd);
 	else if (ft_strncmp(simp_cmd->str1, "cd", 3) == 0)
 		flag = perform_cd(simp_cmd->str2, fd);
-	else if (ft_strncmp(simp_cmd->str1, "pwd", 3) == 0)
+	else if (ft_strncmp(simp_cmd->str1, "pwd", 4) == 0)
 		flag = perform_pwd(fd);
 	else if (ft_strncmp(simp_cmd->str1, "export", 7) == 0)
 		flag = perform_export(simp_cmd->str2, fd);

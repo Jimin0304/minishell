@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:01:04 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:37:08 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:05:00 by jimpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	execute_cmd(t_node *cmd_nd, int *fd, char **env_path)
 	if (cmd_nd->right == NULL)
 		return (0);
 	flag = run_builtin(cmd_nd->right, fd);//-1이 반환되면 빌트인 명령어는 실행되지 않음
-	if (flag != -1)//빌트인 명령이 실행된 경우 
+	if (flag != -1)//빌트인 명령이 실행된 경우
 		return (flag);
 	execute_scmd(cmd_nd->right, env_path);
 	if (errno == 14)
@@ -58,7 +58,7 @@ void	execute_scmd(t_node *scmd, char **env_path)
 	}
 	else
 		file_path = get_cmd_path(scmd->str1, env_path);//경로지정이 되어있지 않고 환경변수가 존재할때
-	execve(file_path, scmd->str2, envp_list);//2번째 인자에는 명령어와 명령어의 옵션이 담겨있는 문자열
+	execve(file_path, scmd->str2, g_envp_list);//2번째 인자에는 명령어와 명령어의 옵션이 담겨있는 문자열
 }
 
 static char	*get_cmd_path(char *cmd, char **env_path)
