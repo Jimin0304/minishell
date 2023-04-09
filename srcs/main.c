@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:44 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/05 17:14:05 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/04/06 22:31:52 by hwankim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char *argv[], char *envp[])
 		break ;
 	}
 	set_terminal_print_on();
-	exit(final_exit_status);
+	exit(ft_atoi(envp_list[0]));
 }
 
 void	process_and_execution(char *user_input)
@@ -60,6 +60,6 @@ void	process_and_execution(char *user_input)
 		}
 		if (tree)
 			tree_delete(tree);
-		final_exit_status = exit_flag;
+		change_exit_flag(exit_flag);
 	}
 }

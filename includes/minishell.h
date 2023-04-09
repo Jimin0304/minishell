@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:10:22 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/05 17:12:47 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/04/06 22:30:34 by hwankim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "builtin.h"
 
 char	**envp_list;//환경변수
-int		final_exit_status;//종료상태
+
 
 enum	e_pipe_fd {
 	PIPE_OUT = 0,
@@ -100,7 +100,7 @@ char	*get_merged_env_str(char *s, char *env);
 char	*ft_strjoin_check_null(char *s1, char *s2);
 int		check_double_flag(char *s, int double_flag);
 char	*fix_dol(char *str);
-void	change_exit_status(int num);
+void	change_exit_flag(int num);
 char	*free_ret(char *env_name, char *str);
 char	*get_merged_str(char *str, t_index *i);
 int		check_input_whitespace(char *str);

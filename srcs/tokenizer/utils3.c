@@ -6,7 +6,7 @@
 /*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:58:37 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:29:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/06 22:01:03 by hwankim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ char	*ft_strjoin_check_null(char *s1, char *s2)
 	return (NULL);
 }
 
-void	change_exit_status(int num)
+void	change_exit_flag(int num)
 {
 	free(envp_list[0]);
 	envp_list[0] = ft_itoa(num);
 	if (envp_list[0] == NULL)
-		malloc_failed("change_exit_status");
+		malloc_failed("change_exit_flag");
 }
 
 void	malloc_failed(char *str)

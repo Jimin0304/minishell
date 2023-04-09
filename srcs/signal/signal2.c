@@ -6,7 +6,7 @@
 /*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:30 by hwankim           #+#    #+#             */
-/*   Updated: 2023/03/31 11:29:05 by hwankim          ###   ########.fr       */
+/*   Updated: 2023/04/06 22:01:03 by hwankim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	perform_sigint(int signum)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
-	final_exit_status = 1;
-	//change_exit_status(1);
+	change_exit_flag(1);
 }
 
 void	perform_sigterm(void)

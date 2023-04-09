@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jimpark <jimpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hwankim <hwankim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:59:24 by hwankim           #+#    #+#             */
-/*   Updated: 2023/04/05 16:33:29 by jimpark          ###   ########.fr       */
+/*   Updated: 2023/04/06 22:34:45 by hwankim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ char	**get_env(char **envp)
 	j = 0;
 	while (envp[len])
 		len++;
-	list = malloc_env(len + 1);
-	len = 0;
+	list = malloc_env(len + 2);//먼가 문제가 생김
+	len = 1;
+	list[0] = ft_strdup2("0", "get_env");//변화 1
+	if (ft_isdigit(envp[0][0]))
+		j++;
 	while (envp[j])
 	{
 		if (ft_strncmp("PWD=", envp[j], 4) == 0)
